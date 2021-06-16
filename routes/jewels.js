@@ -2,7 +2,7 @@ const { Jewel, validate } = require("../models/jewel");
 const { Metal } = require("../models/metal");
 const { Piece } = require("../models/piece");
 const { Stone } = require("../models/stone");
-const { Type } = require("../models/type");
+// const { Type } = require("../models/type");
 const auth = require("../middleware/auth");
 const express = require("express");
 const jwt = require("jsonwebtoken");
@@ -26,29 +26,29 @@ router.get("/", async (req, res) => {
   res.send(jewels);
 });
 
-router.get("/super", async (req, res) => {
-  let jewelArray = await Jewel.find();
-  let jewelsSuper = jewelArray.filter((item) => {
-    return item.type.name === "Super";
-  });
-  res.send(jewelsSuper);
-});
+// router.get("/super", async (req, res) => {
+//   let jewelArray = await Jewel.find();
+//   let jewelsSuper = jewelArray.filter((item) => {
+//     return item.type.name === "Super";
+//   });
+//   res.send(jewelsSuper);
+// });
 
-router.get("/vip", async (req, res) => {
-  let jewelArray = await Jewel.find();
-  let jewelsVip = jewelArray.filter((item) => {
-    return item.type.name === "VIP";
-  });
-  res.send(jewelsVip);
-});
+// router.get("/vip", async (req, res) => {
+//   let jewelArray = await Jewel.find();
+//   let jewelsVip = jewelArray.filter((item) => {
+//     return item.type.name === "VIP";
+//   });
+//   res.send(jewelsVip);
+// });
 
-router.get("/default", async (req, res) => {
-  let jewelArray = await Jewel.find();
-  let jewelsDefailt = jewelArray.filter((item) => {
-    return item.type.name === "Default";
-  });
-  res.send(jewelsDefailt);
-});
+// router.get("/default", async (req, res) => {
+//   let jewelArray = await Jewel.find();
+//   let jewelsDefailt = jewelArray.filter((item) => {
+//     return item.type.name === "Default";
+//   });
+//   res.send(jewelsDefailt);
+// });
 
 router.post("/add", auth, upload.array("productImage"), async (req, res) => {
   const { error } = validate(req.body);
@@ -63,16 +63,28 @@ router.post("/add", auth, upload.array("productImage"), async (req, res) => {
   const stone = await Stone.findById(req.body.stoneId);
   if (!stone) return res.status(400).send("Invalid Stone");
 
-  const type = await Type.findById(req.body.typeId);
-  if (!type) return res.status(400).send("Invalid Type");
+  // const type = await Type.findById(req.body.typeId);
+  // if (!type) return res.status(400).send("Invalid Type");
 
   let imageArray = req.files.map((file) => {
     return file.path;
   });
   let userObject = jwt.decode(req.headers["x-auth-token"]);
+  // datecreator
+  Date.prototype.addDays = function (days) {
+    var date = new Date(this.valueOf());
+    date.setDate(date.getDate() + days);
+    return date;
+  };
+
+  let dateNow = Date.now();
+  let newDateNow = new Date(dateNow);
+  let expDate = newDateNow.addDays(30);
+  // console.log(expDate.toDateString());
+
   let jewel = new Jewel({
     name: req.body.name,
-    duration: req.body.duration,
+    // duration: req.body.duration,
     price: req.body.price,
     description: req.body.description,
     userId: userObject._id,
@@ -82,6 +94,9 @@ router.post("/add", auth, upload.array("productImage"), async (req, res) => {
     contactPerson: req.body.contactPerson,
     weight: req.body.weight,
     size: req.body.size,
+    expired: false,
+    expirationDate: expDate,
+    creationDate: newDateNow,
     metal: {
       _id: metal._id,
       name: metal.name,
@@ -94,11 +109,12 @@ router.post("/add", auth, upload.array("productImage"), async (req, res) => {
       _id: stone._id,
       name: stone.name,
     },
-    type: {
-      _id: type._id,
-      name: type.name,
-    },
+    // type: {
+    //   _id: type._id,
+    //   name: type.name,
+    // },
   });
+
   await jewel.save();
   console.log(jewel);
 
@@ -139,10 +155,10 @@ router.put("/", auth, async (req, res) => {
         _id: stone._id,
         name: stone.name,
       },
-      type: {
-        _id: type._id,
-        name: type.name,
-      },
+      // type: {
+      //   _id: type._id,
+      //   name: type.name,
+      // },
     },
 
     { new: true }

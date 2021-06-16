@@ -6,7 +6,7 @@ const typeSchema = new mongoose.Schema({
     type: String,
     required: true,
     minlength: 3,
-    maxlength: 10,
+    maxlength: 15,
   },
 });
 

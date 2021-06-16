@@ -3,14 +3,13 @@ const mongoose = require("mongoose");
 const { metalSchema } = require("./metal");
 const { pieceSchema } = require("./piece");
 const { stoneSchema } = require("./stone");
-const { typeSchema } = require("./type");
+// const { typeSchema } = require("./type");
 
 const jewelSchema = new mongoose.Schema({
-  duration: {
-    type: Number,
-    default: 30,
-    required: true,
-  },
+  // duration: {
+  //   type: Number,
+  //   default: 30,
+  // },
   name: {
     type: String,
     required: true,
@@ -56,15 +55,18 @@ const jewelSchema = new mongoose.Schema({
   productImage: {
     type: Array,
   },
-  type: {
-    type: typeSchema,
-  },
+  // type: {
+  //   type: typeSchema,
+  // },
   userId: {
     type: String,
   },
   contactPerson: {
     type: String,
   },
+  expired: { type: Boolean },
+  creationDate: { type: Date },
+  expirationDate: { type: Date },
 });
 
 const Jewel = mongoose.model("Jewels", jewelSchema);
@@ -78,14 +80,13 @@ function validateJewel(jewel) {
     stoneId: Joi.string(),
     size: Joi.string().max(100),
     weight: Joi.number().max(10000),
-    duration: Joi.number().required().max(100).default(30),
+    // duration: Joi.number().max(100).default(30),
     price: Joi.number().required().max(10000),
     contactPerson: Joi.string(),
     contactNumber: Joi.string(),
     description: Joi.string().max(300),
     productImage: Joi.any(),
-    typeId: Joi.string().required(),
-    // type: Joi.string(),
+    // typeId: Joi.string().required(),
   };
 
   return Joi.validate(jewel, schema);
