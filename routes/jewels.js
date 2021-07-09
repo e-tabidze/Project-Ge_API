@@ -121,6 +121,13 @@ router.post("/add", auth, upload.array("productImage"), async (req, res) => {
   res.send(jewel);
 });
 
+router.post("/similar", async (req, res) => {
+  let data = await Jewel.find();
+  let filteredData = data.filter((item) => item.piece._id == req.body.type);
+  console.log(filteredData, req.body.type);
+  res.send(filteredData);
+});
+
 router.put("/", auth, async (req, res) => {
   const { error } = validate(req.body);
   if (error) return res.status(400).send(error.details[0].message);
