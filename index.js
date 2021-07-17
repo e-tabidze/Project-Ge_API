@@ -12,6 +12,7 @@ const express = require("express");
 const app = express();
 const CronJob = require("cron").CronJob;
 const { Jewel } = require("./models/jewel");
+const passwordReset = require("./routes/passwordReset");
 
 const expChecker = async () => {
   const jewelsArray = await Jewel.find();
@@ -48,7 +49,7 @@ if (!config.get("jwtPrivateKey")) {
 }
 
 mongoose
-  .connect("mongodb://localhost:27017/project-ge", {
+  .connect(process.env.DB, {
     useNewUrlParser: true,
   })
   .then(() => console.log("Connected to MongoDB..."))
@@ -64,6 +65,7 @@ app.use("/api/pieces", pieces);
 app.use("/api/jewels", jewels);
 app.use("/api/types", types);
 app.use("/api/users", users);
+app.use("/api/password-reset", passwordReset)
 app.use("/api/auth", auth);
 
 const port = process.env.PORT || 3000;
