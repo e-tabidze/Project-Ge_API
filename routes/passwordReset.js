@@ -1,6 +1,6 @@
 const { User } = require("../models/user");
 const Token = require("../models/token");
-const sendEmail = require("../utils/sendEmail");
+const sendEmail = require("../utils/sendMail");
 const crypto = require("crypto");
 const Joi = require("joi");
 const express = require("express");
@@ -27,7 +27,7 @@ router.post("/", async (req, res) => {
         const link = `${process.env.BASE_URL}/password-reset/${user._id}/${token.token}`;
         await sendEmail(user.email, "Password reset", link);
 
-        res.send("password reset link sent to your email account");
+        res.send("Password reset link sent to your email account");
     } catch (error) {
         res.send("An error occured");
         console.log(error);
