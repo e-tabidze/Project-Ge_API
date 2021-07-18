@@ -67,7 +67,7 @@ app.use("/api/pieces", pieces);
 app.use("/api/jewels", jewels);
 app.use("/api/types", types);
 app.use("/api/users", users);
-app.use("/api/password-reset", passwordReset)
+app.use("/api/password-reset", passwordReset);
 app.use("/api/auth", auth);
 
 const port = process.env.PORT || 3000;
