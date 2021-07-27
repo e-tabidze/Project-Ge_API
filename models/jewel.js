@@ -22,7 +22,6 @@ const jewelSchema = new mongoose.Schema({
   },
   price: {
     type: Number,
-    required: true,
     maxlength: 10000,
   },
   metal: {
@@ -42,7 +41,6 @@ const jewelSchema = new mongoose.Schema({
   },
   standard: {
     type: String,
-    required: true,
     maxlength: 10000,
   },
   contactNumber: {
@@ -73,15 +71,15 @@ const Jewel = mongoose.model("Jewels", jewelSchema);
 
 function validateJewel(jewel) {
   const schema = {
-    name: Joi.string().required().max(100),
+    name: Joi.string().max(100),
     pieceId: Joi.string(),
     metalId: Joi.string(),
-    standard: Joi.string().max(10000).required(),
+    standard: Joi.string().max(10000),
     stoneId: Joi.string(),
-    size: Joi.string().max(100),
+    size: Joi.label("ზომა"),
     weight: Joi.number().max(10000),
     // duration: Joi.number().max(100).default(30),
-    price: Joi.number().required().max(10000),
+    price: Joi.number().max(10000),
     contactPerson: Joi.string(),
     contactNumber: Joi.string(),
     description: Joi.string().max(300),

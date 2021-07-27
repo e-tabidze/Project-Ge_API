@@ -18,9 +18,9 @@ require("dotenv").config();
 
 const expChecker = async () => {
   const jewelsArray = await Jewel.find();
-  let jewelsArrayFiltered = jewelsArray.filter((item) => {
-    return item.type.name === "Super" || "VIP";
-  });
+  // let jewelsArrayFiltered = jewelsArray.filter((item) => {
+  //   return item.type.name === "Super" || "VIP";
+  // });
   let dateNow = Date.now();
   let newDateNow = new Date(dateNow);
   jewelsArray.forEach(async (item) => {
