@@ -81,7 +81,7 @@ router.post("/add", auth, upload.array("productImage"), async (req, res) => {
   let newDateNow = new Date(dateNow);
   let expDate = newDateNow.addDays(30);
   // console.log(expDate.toDateString());
-
+  console.log(req.body, "NEW JEWEL");
   let jewel = new Jewel({
     name: req.body.name,
     // duration: req.body.duration,
@@ -116,7 +116,7 @@ router.post("/add", auth, upload.array("productImage"), async (req, res) => {
   });
 
   await jewel.save();
-  // console.log(jewel);
+  console.log(jewel);
 
   res.send(jewel);
 });
@@ -128,7 +128,7 @@ router.post("/similar", async (req, res) => {
   res.send(filteredData);
 });
 
-router.put("/", auth, async (req, res) => {
+router.put("/update/:id", auth, async (req, res) => {
   const { error } = validate(req.body);
   if (error) return res.status(400).send(error.details[0].message);
 
@@ -140,14 +140,13 @@ router.put("/", auth, async (req, res) => {
 
   const stone = await Stone.findById(req.body.stoneId);
   if (!stone) return res.status(400).send("Invalid Stone");
-
   const jewel = await Jewel.findByIdAndUpdate(
     req.params.id,
     {
       name: req.body.name,
       price: req.body.price,
       description: req.body.description,
-      productImage: req.file.filename,
+      // productImage: req.file.filename,
       contactNumber: req.body.contactNumber,
       contactPerson: req.body.contactPerson,
       metal: {
@@ -170,10 +169,8 @@ router.put("/", auth, async (req, res) => {
 
     { new: true }
   );
-
   if (!jewel)
     return res.status(404).send("The jewel with given ID was not found");
-
   res.send(jewel);
 });
 

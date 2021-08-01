@@ -81,7 +81,7 @@ function validateJewel(jewel) {
     // duration: Joi.number().max(100).default(30),
     price: Joi.number().max(10000),
     contactPerson: Joi.string(),
-    contactNumber: Joi.string(),
+    contactNumber: Joi.number(),
     description: Joi.string().max(300),
     productImage: Joi.any(),
     // typeId: Joi.string().required(),
