@@ -128,7 +128,7 @@ router.post("/similar", async (req, res) => {
   res.send(filteredData);
 });
 
-router.put("/update/:id", auth, async (req, res) => {
+router.post("/update/:id", auth, upload.array("productImage"), async (req, res) => {
   const { error } = validate(req.body);
   if (error) return res.status(400).send(error.details[0].message);
 
@@ -140,13 +140,26 @@ router.put("/update/:id", auth, async (req, res) => {
 
   const stone = await Stone.findById(req.body.stoneId);
   if (!stone) return res.status(400).send("Invalid Stone");
+
+  let imageArray = req.files.map((file) => {
+    return file.path;
+  });
+
+  var exisArr = req.body.existingProductImage.split(',');
+
+  exisArr.map(item => {
+    imageArray.push(item);
+  })
+
+  console.log(exisArr, imageArray, " <======= OPA");
+
   const jewel = await Jewel.findByIdAndUpdate(
     req.params.id,
     {
       name: req.body.name,
       price: req.body.price,
       description: req.body.description,
-      // productImage: req.file.filename,
+      productImage: imageArray,
       contactNumber: req.body.contactNumber,
       contactPerson: req.body.contactPerson,
       metal: {

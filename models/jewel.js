@@ -84,6 +84,7 @@ function validateJewel(jewel) {
     contactNumber: Joi.number(),
     description: Joi.string().max(300),
     productImage: Joi.any(),
+    existingProductImage: Joi.any()
     // typeId: Joi.string().required(),
   };
 
