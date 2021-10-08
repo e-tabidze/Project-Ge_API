@@ -50,6 +50,12 @@ if (!config.get("jwtPrivateKey")) {
   process.exit(1);
 }
 
+// module.exports = function() {
+//   if (!config.has('jwtPrivateKey')) {
+//     throw new Error('FATAL ERROR: jwtPrivateKey is not defined.');
+//   }
+// }
+
 mongoose
   .connect(process.env.DB, {
     useNewUrlParser: true,

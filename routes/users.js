@@ -28,10 +28,7 @@ async function sendMail() {
   try {
     const accessToken = await oAuth2Client.getAccessToken();
 
-    const transport = nodemailer.createTransport({
-       
-    })
-
+    const transport = nodemailer.createTransport({});
   } catch (error) {
     return error;
   }
@@ -67,6 +64,11 @@ router.post("/", async (req, res) => {
     .header("x-auth-token", token)
     .header("access-control-expose-headers", "x-auth-token")
     .send(_.pick(user, ["_id", "name", "email"]));
+});
+
+router.post("/update/:id", auth, async (req, res) => {
+  const { error } = validate(req.body);
+  if (error) return res.status(400).send(error.details[0].message);
 });
 
 router.post("/jewels", async (req, res) => {

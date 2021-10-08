@@ -72,19 +72,19 @@ const Jewel = mongoose.model("Jewels", jewelSchema);
 function validateJewel(jewel) {
   const schema = {
     name: Joi.string().max(100),
-    pieceId: Joi.string(),
-    metalId: Joi.string(),
-    standard: Joi.string().max(10000),
-    stoneId: Joi.string(),
+    piece: Joi.any(),
+    metal: Joi.any(),
+    standard: Joi.label("სინჯი"),
+    stone: Joi.any(),
     size: Joi.label("ზომა"),
     weight: Joi.number().max(10000),
-    // duration: Joi.number().max(100).default(30),
+    duration: Joi.number().max(100).default(30),
     price: Joi.number().max(10000),
     contactPerson: Joi.string(),
     contactNumber: Joi.number(),
     description: Joi.string().max(300),
     productImage: Joi.any(),
-    existingProductImage: Joi.any()
+    existingImages: Joi.any(),
     // typeId: Joi.string().required(),
   };
 
