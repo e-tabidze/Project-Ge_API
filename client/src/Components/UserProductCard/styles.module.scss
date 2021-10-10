@@ -1,0 +1,93 @@
+.userproductcard {
+  display: grid;
+  grid-template-columns: 43% 57%;
+  border: 1px solid #001e42;
+  border-radius: 4px;
+  margin: 32px 0px;
+  padding: 8px;
+  @media only screen and (max-width: 900px) {
+    grid-template-columns: 100%;
+  }
+
+  ul {
+    list-style-type: none;
+    margin: 0px;
+    padding: 0px;
+    li {
+      display: flex;
+      padding: 6px 0px;
+      span {
+        color: #001e42;
+        font-weight: 200;
+        font-style: italic;
+        width: 110px;
+      }
+      p {
+        margin: 0px;
+      }
+    }
+  }
+
+  &_slider {
+    max-width: 500px;
+    @media only screen and (max-width: 900px) {
+      max-width: unset;
+    }
+  }
+  &_content {
+    &_description {
+      width: 94%;
+      margin: 0 auto !important;
+    }
+    &_table {
+      display: grid;
+      grid-template-columns: 94% 6%;
+
+      @media only screen and (max-width: 425px) {
+        display: flex;
+        flex-direction: column-reverse;
+      }
+      &_specifications {
+        display: grid;
+        grid-template-columns: 50% 50%;
+        margin-left: 10px;
+
+        @media only screen and (max-width: 425px) {
+          grid-template-columns: 100%;
+        }
+        &_title {
+          color: #001e42;
+          font-weight: 200;
+          font-style: italic;
+        }
+      }
+    }
+    &_actions {
+      display: flex;
+      @media only screen and (max-width: 425px) {
+        justify-content: flex-end;
+      }
+    }
+    &_description {
+      display: inline-block;
+      margin-top: 8px;
+    }
+  }
+}
+
+.userproductcard:hover {
+  border: 1px solid #bb9654;
+  border-radius: 4px;
+}
+
+.descriptionsection {
+  width: 100% !important;
+}
+
+.alert {
+  max-width: 600px;
+  min-width: 320px;
+  position: absolute;
+  top: 30px;
+  right: 30px;
+}

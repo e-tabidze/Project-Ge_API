@@ -1,0 +1,55 @@
+.userpage {
+  display: grid;
+  grid-template-columns: 15% 70% 15%;
+  @media only screen and (max-width: 425px) {
+    grid-template-columns: 5% 90% 5%;
+  }
+  &_ads {
+    margin: 48px 0px 0px 8px;
+  }
+  &_content {
+    display: flex;
+    flex-direction: column;
+    margin-top: 48px;
+    &_wrapper {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      &_ad {
+        margin: 24px 0px;
+        width: 100%;
+        > img {
+          width: 100%;
+        }
+      }
+      &_welcomeText {
+        font-size: 15px;
+        color: #001e42;
+        margin-top: 16px;
+      }
+      &_userDetails {
+        margin-top: 48px;
+        &_edit {
+          display: flex;
+          color: #001e42;
+          font-size: 14px;
+          font-style: italic;
+          width: 250px;
+          justify-content: space-between;
+          border-bottom: 1px solid #001e42;
+          cursor: pointer;
+          padding-bottom: 4px;
+        }
+      }
+      &_cta {
+        display: flex;
+        align-items: center;
+        margin-top: 56px;
+        cursor: pointer;
+        span {
+          color: #001e42;
+        }
+      }
+    }
+  }
+}

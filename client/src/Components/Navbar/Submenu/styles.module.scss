@@ -1,0 +1,12 @@
+li {
+  text-align: initial;
+  padding: 10px;
+  @media only screen and (max-width: 425px) {
+    margin: 0px !important;
+  }
+}
+
+.submenu {
+  background: #ffffff;
+  width: fit-content;
+}

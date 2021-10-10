@@ -1,0 +1,17 @@
+.accountform {
+  margin: 20px 50px 50px 50px;
+  @media only screen and (max-width: 425px) {
+    margin: 10px;
+  }
+  &_forgotPasswordLink {
+    cursor: pointer;
+    text-decoration: underline;
+  }
+  &_registrationLink {
+    margin-top: 8px;
+    span {
+      cursor: pointer;
+      text-decoration: underline;
+    }
+  }
+}

@@ -1,0 +1,113 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+.slider-img {
+  width: 100%;
+}
+
+.slider {
+  ul li {
+    display: inline;
+  }
+}
+
+.css-h4y409-MuiList-root {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.slick-arrow {
+  color: #bb9654 !important;
+}
+
+.slick-prev {
+  left: 10px;
+  z-index: 10;
+}
+
+.slick-next {
+  right: 10px;
+  z-index: 10;
+}
+
+.slick-dots li button:before {
+  color: #001e42 !important;
+  opacity: 0.25 !important;
+}
+.magic-dots.slick-dots li.slick-active button:before {
+  color: #bb9654 !important;
+  opacity: 1 !important;
+}
+
+.MuiCardContent-root {
+  padding: 8px !important;
+}
+
+.MuiDialog-paperWidthSm {
+  padding: 36px;
+}
+
+.MuiTypography-body1 {
+  color: #001e42;
+  font-weight: 200;
+  display: block;
+  margin-left: 8px;
+}
+
+.MuiAlert-filledSuccess {
+  width: 450px;
+  position: absolute;
+  right: 0px;
+  top: 100px;
+  z-index: 100;
+}
+
+.MuiAlert-filledError {
+  width: 450px;
+  position: absolute;
+  right: 0px;
+  top: 100px;
+  z-index: 100;
+}
+
+a {
+  text-decoration: none;
+  color: unset;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

@@ -1,0 +1,81 @@
+.productpage {
+  display: grid;
+  grid-template-columns: 10% 80% 10%;
+  &_sideAds {
+    margin: 48px 8px 0px 0px;
+  }
+  &_products_ad {
+    width: 100%;
+    margin-top: 36px;
+    > img {
+      width: 100%;
+    }
+  }
+  &_product {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    margin-top: 48px;
+    &_info {
+      display: flex;
+      flex-direction: column;
+      margin-left: 20px;
+      &_specs {
+        display: grid;
+        grid-template-columns: 50% 50%;
+        height: fit-content;
+        border-bottom: 1px solid #001e42;
+        padding-bottom: 8px;
+        ul {
+          list-style-type: none;
+          margin: 0px;
+          padding: 0px;
+
+          li {
+            display: flex;
+            padding: 6px 0px;
+            letter-spacing: 0.34px;
+            font-size: 13px;
+            line-height: 15px;
+            span {
+              color: #001e42;
+              font-weight: 200;
+              font-style: italic;
+              width: 110px;
+              letter-spacing: 0.34px;
+              font-size: 13px;
+              line-height: 15px;
+            }
+            p {
+              margin: 0px;
+            }
+          }
+        }
+        &_title {
+          font-size: 23px;
+          line-height: 29px;
+          font-weight: 400;
+          color: #001e42;
+        }
+        &_about {
+          letter-spacing: 0.34px;
+          font-size: 13px;
+          line-height: 15px;
+          color: #001e42;
+          margin-top: 36px;
+          display: inline-block;
+          width: fit-content;
+          border-bottom: 1px solid #001e42;
+          padding-bottom: 4px;
+        }
+      }
+    }
+    &_similarjewels {
+      margin-top: 48px;
+      &_products {
+        display: grid;
+        grid-template-columns: 25% 25% 25% 25%;
+        grid-gap: 10px;
+      }
+    }
+  }
+}

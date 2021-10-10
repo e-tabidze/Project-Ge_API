@@ -1,0 +1,33 @@
+.dropdown {
+  margin: 16px 0px;
+}
+
+MuiButton-label {
+  color: #001e42 !important;
+}
+
+MuiButton-label:hover {
+  color: #ffffff !important;
+}
+button.MuiButtonBase-root:hover {
+  background-color: #001e42 !important;
+}
+
+.alert {
+  max-width: 600px;
+  min-width: 320px;
+  position: absolute;
+  top: 30px;
+  right: 30px;
+}
+
+.images {
+  display: flex;
+  &_productImages {
+    > img {
+      width: 200px;
+      height: 200px;
+      object-fit: cover;
+    }
+  }
+}
