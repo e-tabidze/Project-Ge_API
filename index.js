@@ -69,6 +69,7 @@ const whitelist = [
   "http://localhost:3000",
   "http://localhost:8080",
   "https://projectge.herokuapp.com",
+  "https://ge-gold.herokuapp.com/"
 ];
 const corsOptions = {
   origin: function (origin, callback) {
