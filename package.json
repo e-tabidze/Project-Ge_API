@@ -1,11 +1,19 @@
 {
-  "name": "Jewel_App",
+  "name": "ge-gold",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "cd client && npm run build",
+    "install-client": "cd client && npm install",
+    "start": "node index.js",
+    "heroku-postbuild": "npm run install-client && npm run build"
   },
+  "engines": {
+    "node": "14.16.0"
+  },
+  "proxy": "http://localhost:8000",
   "keywords": [],
   "author": "",
   "license": "ISC",
