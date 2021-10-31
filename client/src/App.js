@@ -8,26 +8,31 @@ import ResetPasswordPage from "./Pages/ResetPasswordPage/ResetPasswordPage";
 import Terms from "./Pages/Terms/Terms";
 import Footer from "./Components/Footer/Footer";
 
-import { Switch, Route } from "react-router-dom";
+import { Switch, Route, Redirect } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 
 import "react-toastify/dist/ReactToastify.css";
 import "./App.scss";
 
 function App() {
-  const { currentUser, jwt } = useCurrentUser();
+  const { currentUser } = useCurrentUser();
   return (
     <Switch>
       <>
         <ToastContainer />
         <Navbar />
         <Route exact path="/" component={() => <HomePage />} />
-        <Route
+        {/* <Route
           exact
           path="/user-page"
           render={() => {
             jwt && <UserPage />;
           }}
+        /> */}
+        <Route
+          exact
+          path="/user-page"
+          render={() => (currentUser ? <UserPage /> : <Redirect to="/" />)}
         />
         <Route exact path="/product/:id" component={() => <ProductPage />} />
         <Route

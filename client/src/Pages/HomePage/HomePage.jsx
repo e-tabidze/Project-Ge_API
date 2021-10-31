@@ -75,7 +75,6 @@ const HomePage = () => {
         </div>
       </div>
       <div className={classes.homepage_ads}>
-        დედისტყვნა
         {/* <img
           src={side}
           alt="ოქროს მარკეტი საქართველოში"
