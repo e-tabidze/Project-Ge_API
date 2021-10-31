@@ -22,6 +22,7 @@ function auth(req, res, next) {
       next();
     }
   } catch {
+    res.status(400).send("Invalid token.");
     res.status(401).json({
       error: new Error("Invalid request!"),
     });
