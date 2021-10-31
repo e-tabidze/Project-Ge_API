@@ -4,7 +4,7 @@ import jwtDecode from "jwt-decode";
 const useCurrentUser = () => {
   const [currentUser, setCurrentUser] = useState(null);
   const currentUserRef = useRef(null);
-  const jwt = JSON.parse(localStorage.getItem("token"));
+  const jwt = localStorage.getItem("token");
 
   const getCurrentUser = () => {
     try {
