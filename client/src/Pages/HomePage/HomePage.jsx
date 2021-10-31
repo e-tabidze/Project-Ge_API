@@ -9,7 +9,7 @@ import banner1 from "../../Assets/main.jpeg";
 import banner2 from "../../Assets/main.jpeg";
 import banner3 from "../../Assets/main.jpeg";
 import banner4 from "../../Assets/main.jpeg";
-import side from "../../Assets/side.jpeg";
+// import side from "../../Assets/side.jpeg";
 import filterIcon from "../../Assets/filter-icon.png";
 
 import classes from "./styles.module.scss";
