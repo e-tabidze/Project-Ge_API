@@ -155,7 +155,7 @@ const ProductModal = ({
           )}
         />
 
-        {watchSize._id === "6127186196d01a09d81632fa" && (
+        {watchSize._id == "6127186196d01a09d81632fa" && (
           <TextField
             {...register("size")}
             required
@@ -201,7 +201,7 @@ const ProductModal = ({
               <div className={classes.dropdown}>
                 <InputLabel required>სინჯი</InputLabel>
                 <>
-                  {watchMetal._id === "612695f90dade4d347a56a82" ? (
+                  {watchMetal._id == "612695f90dade4d347a56a82" ? (
                     <Select fullWidth {...field}>
                       {goldStandards.map((goldStandard) => (
                         <MenuItem
@@ -345,7 +345,7 @@ const ProductModal = ({
                   width="200"
                   height="200"
                   alt="Product"
-                  src={`http://localhost:3000/${image}`}
+                  src={`https://ge-gold.herokuapp.com/${image}`}
                 />
                 <button
                   onClick={(e) => handleDeleteImage(image, e)}

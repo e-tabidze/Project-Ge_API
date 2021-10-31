@@ -26,8 +26,6 @@ function App() {
           exact
           path="/user-page"
           render={() => {
-            // if (!currentUser) return null;
-            // return <UserPage />;
             currentUser && <UserPage />;
           }}
         />
