@@ -74,10 +74,17 @@ const ProductModal = ({
   const watchMetal = watch("metal");
 
   useEffect(() => {
-    const subscription = watch((value) => console.log(value));
-    console.log(watch("piece"), "<====");
+    const subscription = watch((value) => {
+      console.log(value);
+      console.log(watch("piece"), "<====");
+    });
+
     return () => subscription.unsubscribe();
   }, [watch]);
+
+  useEffect(() => {
+    console.log(watch("piece"), "<=====");
+  });
 
   const objectToFormData = (obj) => {
     let fd = new FormData();
@@ -113,8 +120,6 @@ const ProductModal = ({
     let test = productObject.existingImages.filter((image) => image !== imgUrl);
     setProductObject({ ...productObject, ["existingImages"]: test });
   };
-
-  useEffect(() => {}, [productObject]);
 
   return (
     <Dialog open={productModalActive} onClose={productModalToggle}>
@@ -229,8 +234,6 @@ const ProductModal = ({
             )}
           />
         )}
-
-        {console.log(watchMetal.metal, "my consol")}
 
         <Controller
           control={control}
