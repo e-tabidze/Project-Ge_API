@@ -70,13 +70,11 @@ const ProductModal = ({
       description: productObject.description,
     },
   });
-  const watchSize = watch("piece");
   const watchMetal = watch("metal");
 
   useEffect(() => {
     const subscription = watch((value) => {
       console.log(value);
-      console.log(watch("piece"), "<====");
     });
 
     return () => subscription.unsubscribe();
@@ -194,7 +192,7 @@ const ProductModal = ({
           )}
         />
 
-        {watchMetal.length > 0 && (
+        {watch("metal").length > 0 && (
           <Controller
             control={control}
             name="standard"
