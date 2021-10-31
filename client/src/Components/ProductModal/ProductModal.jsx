@@ -75,6 +75,7 @@ const ProductModal = ({
 
   useEffect(() => {
     const subscription = watch((value) => console.log(value));
+    console.log(watchSize, "====");
     return () => subscription.unsubscribe();
   }, [watch]);
 
