@@ -155,7 +155,7 @@ const ProductModal = ({
           )}
         />
 
-        {watchSize._id == "6127186196d01a09d81632fa" && (
+        {watchSize === "6127186196d01a09d81632fa" && (
           <TextField
             {...register("size")}
             required
@@ -165,7 +165,6 @@ const ProductModal = ({
             size="small"
           />
         )}
-        {console.log(watchSize, "size")}
         <TextField
           {...register("weight")}
           required
@@ -201,7 +200,7 @@ const ProductModal = ({
               <div className={classes.dropdown}>
                 <InputLabel required>სინჯი</InputLabel>
                 <>
-                  {watchMetal._id == "612695f90dade4d347a56a82" ? (
+                  {watchMetal.piece === "612695f90dade4d347a56a82" ? (
                     <Select fullWidth {...field}>
                       {goldStandards.map((goldStandard) => (
                         <MenuItem
