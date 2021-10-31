@@ -22,11 +22,13 @@ function App() {
         <ToastContainer />
         <Navbar />
         <Route exact path="/" component={() => <HomePage />} />
-        {currentUser && (
-          <Route exact path="/user-page">
-            <UserPage />;
-          </Route>
-        )}
+        <Route
+          exact
+          path="/user-page"
+          render={() => {
+            currentUser && <UserPage />;
+          }}
+        />
         <Route exact path="/product/:id" component={() => <ProductPage />} />
         <Route
           exact
