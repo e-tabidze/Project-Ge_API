@@ -165,7 +165,7 @@ const ProductModal = ({
             size="small"
           />
         )}
-        {console.log(watchSize)}
+        {console.log(watchSize, "size")}
         <TextField
           {...register("weight")}
           required
@@ -230,7 +230,6 @@ const ProductModal = ({
           />
         )}
 
-        {console.log(watchMetal)}
 
         <Controller
           control={control}
