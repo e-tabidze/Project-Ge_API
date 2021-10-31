@@ -156,7 +156,7 @@ const ProductModal = ({
           )}
         />
 
-        {watchSize.piece === "6127186196d01a09d81632fa" && (
+        {watch("piece").piece === "6127186196d01a09d81632fa" && (
           <TextField
             {...register("size")}
             required
