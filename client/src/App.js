@@ -26,7 +26,8 @@ function App() {
           exact
           path="/user-page"
           render={() => {
-            currentUser && <UserPage />;
+            if (!currentUser) return null;
+            return <UserPage />;
           }}
         />
         <Route exact path="/product/:id" component={() => <ProductPage />} />
