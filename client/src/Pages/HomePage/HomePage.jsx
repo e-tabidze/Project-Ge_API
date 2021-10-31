@@ -75,7 +75,6 @@ const HomePage = () => {
         </div>
       </div>
       <div className={classes.homepage_ads}>
-        ყლეობა
         {/* <img
           src={side}
           alt="ოქროს მარკეტი საქართველოში"
