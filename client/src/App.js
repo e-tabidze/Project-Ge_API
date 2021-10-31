@@ -30,7 +30,7 @@ function App() {
             return <UserPage />;
           }}
         /> */}
-        <Route exact path="/" render={() => currentUser && <UserPage />} />
+        {currentUser && <Route exact path="/" render={() => <UserPage />} />}
 
         <Route exact path="/product/:id" component={() => <ProductPage />} />
         <Route
