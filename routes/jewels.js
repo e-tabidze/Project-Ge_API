@@ -28,16 +28,12 @@ router.get("/", async (req, res) => {
 
 router.post("/add", auth, upload.array("productImage"), async (req, res) => {
   const { error } = validate(req.body);
-  console.log(error, "<==== Jewel Error");
   if (error) return res.status(400).send(error.details[0].message);
   const metal = await Metal.findById(req.body.metal);
-  console.log(JSON.stringify(req.body.metal._id), "<=== Metal Error");
   if (!metal) return res.status(400).send("Invalid Metal");
   const piece = await Piece.findById(req.body.piece);
-  console.log(piece, "<=== Piece Error");
   if (!piece) return res.status(400).send("Invalid Piece");
   const stone = await Stone.findById(req.body.stone);
-  console.log(stone, "<=== Stone Error");
   if (!stone) return res.status(400).send("Invalid Stone");
 
   let imageArray = req.files.map((file) => {
