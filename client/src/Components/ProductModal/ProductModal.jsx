@@ -229,7 +229,6 @@ const ProductModal = ({
           />
         )}
 
-
         <Controller
           control={control}
           name="stone"
