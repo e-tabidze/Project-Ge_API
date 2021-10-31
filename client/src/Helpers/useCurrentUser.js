@@ -9,7 +9,6 @@ const useCurrentUser = () => {
   const getCurrentUser = () => {
     try {
       let currentUserData = jwtDecode(jwt);
-      console.log(currentUserData, " Current User")
       setCurrentUser(currentUserData);
       currentUserRef.current = currentUserData;
     } catch (ex) {}

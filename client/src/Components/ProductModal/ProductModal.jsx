@@ -165,7 +165,7 @@ const ProductModal = ({
             size="small"
           />
         )}
-
+        {console.log(watchSize)}
         <TextField
           {...register("weight")}
           required
@@ -229,6 +229,8 @@ const ProductModal = ({
             )}
           />
         )}
+
+        {console.log(watchMetal)}
 
         <Controller
           control={control}
@@ -345,7 +347,7 @@ const ProductModal = ({
                   width="200"
                   height="200"
                   alt="Product"
-                  src={`https://ge-gold.herokuapp.com/${image}`}
+                  src={`https://ge-gold.herokuapp.com /${image}`}
                 />
                 <button
                   onClick={(e) => handleDeleteImage(image, e)}
