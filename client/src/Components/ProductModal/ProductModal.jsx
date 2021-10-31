@@ -70,7 +70,6 @@ const ProductModal = ({
       description: productObject.description,
     },
   });
-  const watchMetal = watch("metal");
 
   useEffect(() => {
     const subscription = watch((value) => {

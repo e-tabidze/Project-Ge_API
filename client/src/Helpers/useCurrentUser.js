@@ -5,6 +5,7 @@ const useCurrentUser = () => {
   const [currentUser, setCurrentUser] = useState(null);
   const currentUserRef = useRef(null);
   const jwt = localStorage.getItem("token");
+  console.log(jwt, currentUser);
 
   const getCurrentUser = () => {
     try {
