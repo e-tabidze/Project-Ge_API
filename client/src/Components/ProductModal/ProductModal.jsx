@@ -82,10 +82,6 @@ const ProductModal = ({
     return () => subscription.unsubscribe();
   }, [watch]);
 
-  useEffect(() => {
-    console.log(watch("piece"), "<=====");
-  });
-
   const objectToFormData = (obj) => {
     let fd = new FormData();
     for (let item in obj) {
@@ -206,7 +202,7 @@ const ProductModal = ({
               <div className={classes.dropdown}>
                 <InputLabel required>სინჯი</InputLabel>
                 <>
-                  {watchMetal.metal === "612695f90dade4d347a56a82" ? (
+                  {watch("metal") === "612695f90dade4d347a56a82" ? (
                     <Select fullWidth {...field}>
                       {goldStandards.map((goldStandard) => (
                         <MenuItem
