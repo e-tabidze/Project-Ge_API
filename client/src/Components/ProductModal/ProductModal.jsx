@@ -229,6 +229,8 @@ const ProductModal = ({
           />
         )}
 
+        {console.log(watchMetal.metal, "my consol")}
+
         <Controller
           control={control}
           name="stone"
