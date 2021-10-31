@@ -75,7 +75,7 @@ const HomePage = () => {
         </div>
       </div>
       <div className={classes.homepage_ads}>
-        <img
+        {/* <img
           src={side}
           alt="ოქროს მარკეტი საქართველოში"
           className={classes.homepage_ads_ad}
@@ -94,7 +94,7 @@ const HomePage = () => {
           src={side}
           alt="ოქროს მარკეტი საქართველოში"
           className={classes.homepage_ads_ad}
-        />
+        /> */}
       </div>
     </div>
   );
