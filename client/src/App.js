@@ -15,7 +15,7 @@ import "react-toastify/dist/ReactToastify.css";
 import "./App.scss";
 
 function App() {
-  const { currentUser } = useCurrentUser();
+  const { currentUser, jwt } = useCurrentUser();
   return (
     <Switch>
       <>
@@ -26,11 +26,9 @@ function App() {
           exact
           path="/user-page"
           render={() => {
-            currentUser && <UserPage />;
+            jwt && <UserPage />;
           }}
         />
-        {/* {currentUser && <Route exact path="/" render={() => <UserPage />} />} */}
-
         <Route exact path="/product/:id" component={() => <ProductPage />} />
         <Route
           exact
