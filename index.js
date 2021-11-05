@@ -51,7 +51,7 @@ const subscribtionJob = new CronJob(
 subscribtionJob.start();
 
 module.exports = function () {
-  if (!process.env.JWT_PRIVATE_KEY) {
+  if (!config.get("jwtPrivateKey")) {
     throw new Error("FATAL ERROR: jwtPrivateKey is not defined.");
   }
 };
@@ -68,13 +68,16 @@ mongoose
 const whitelist = [
   "http://localhost:3000",
   "http://localhost:8080",
-  "https://ge-gold.herokuapp.com",
+  "https://ge-gold.herokuapp.com"
 ];
 const corsOptions = {
   origin: function (origin, callback) {
+    console.log("** Origin of request " + origin);
     if (whitelist.indexOf(origin) !== -1 || !origin) {
+      console.log("Origin acceptable");
       callback(null, true);
     } else {
+      console.log("Origin rejected");
       callback(new Error("Not allowed by CORS"));
     }
   },
