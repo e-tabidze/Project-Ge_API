@@ -4,11 +4,11 @@ import jwtDecode from "jwt-decode";
 const useCurrentUser = () => {
   const [currentUser, setCurrentUser] = useState(null);
   const currentUserRef = useRef(null);
-  const jwt = localStorage.getItem("token");
+  const existingJWT = localStorage.getItem("token");
 
-  const getCurrentUser = () => {
+  let getCurrentUser = (jwt) => {
     try {
-      let currentUserData = jwtDecode(jwt);
+      let currentUserData = jwtDecode(jwt ? jwt : existingJWT);
       console.log(currentUserData, "[IBIOMAW]")
       setCurrentUser(currentUserData);
       currentUserRef.current = currentUserData;
@@ -25,7 +25,7 @@ const useCurrentUser = () => {
   useEffect(() => {
     console.log(currentUser, "AXUIEW");
   }, [currentUser])
-  return { currentUser, setCurrentUser, getCurrentUser, jwt, currentUserRef };
+  return { currentUser, setCurrentUser, getCurrentUser, existingJWT, currentUserRef };
 };
 
 export default useCurrentUser;
