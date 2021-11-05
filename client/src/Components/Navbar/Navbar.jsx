@@ -52,7 +52,7 @@ const Navbar = () => {
         />
       </NavLink>
       <div className={classes.navbar_userInitial}>
-        {currentUserRef && (
+        {currentUser && (
           <UserInitial
             classes={`${userClasses.initial} ${userClasses.initial_nav} `}
             initial={currentUser.email.toUpperCase().charAt(0)}
