@@ -26,7 +26,7 @@ router.get("/", async (req, res) => {
   res.send(jewels);
 });
 
-router.post("/add", [auth], upload.array("productImage"), async (req, res) => {
+router.post("/add", auth, upload.array("productImage"), async (req, res) => {
   const { error } = validate(req.body);
   if (error) return res.status(400).send(error.details[0].message);
   const metal = await Metal.findById(req.body.metal);

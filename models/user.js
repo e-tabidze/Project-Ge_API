@@ -33,7 +33,7 @@ userSchema.methods.generateAuthToken = function () {
   const token = jwt.sign(
     { _id: this._id, name: this.name, email: this.email },
     // config.get("jwtPrivateKey")
-    configJS.secret
+    process.env.ACCESS_TOKEN_SECRET
   );
   return token;
 };
