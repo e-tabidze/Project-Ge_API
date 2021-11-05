@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import useCurrentUser from "../../Helpers/useCurrentUser";
 
 import Button from "../../ReusableComponents/Button/Button";
@@ -17,9 +17,13 @@ import userClasses from "../../ReusableComponents/UserInitial/styles.module.scss
 const Navbar = () => {
   const [submenuActive, setSubmenuActive] = useState(false);
   const [accountModalActive, setAccountModalActive] = useState(false);
-  const { currentUser, setCurrentUser, getCurrentUser } = useCurrentUser();
+  const { currentUser, setCurrentUser, getCurrentUser, currentUserRef } = useCurrentUser();
 
   const history = useHistory();
+
+  useEffect(() => {
+    console.log(currentUser, "[NAVBAR CURRENT USER]")
+  }, [currentUser])
 
   const toggleSubmenu = () => {
     setSubmenuActive(!submenuActive);
@@ -48,7 +52,7 @@ const Navbar = () => {
         />
       </NavLink>
       <div className={classes.navbar_userInitial}>
-        {currentUser && (
+        {currentUserRef && (
           <UserInitial
             classes={`${userClasses.initial} ${userClasses.initial_nav} `}
             initial={currentUser.email.toUpperCase().charAt(0)}
