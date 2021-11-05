@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { loginUser } from "../../Services/ApiEndpoints";
 
-import { useHistory } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import {
   TextField,
@@ -27,7 +26,6 @@ const LoginForm = ({
   accountModalActive,
 }) => {
   const [alert, setAlert] = useState("");
-  const history = useHistory();
 
   const {
     register,
@@ -41,7 +39,6 @@ const LoginForm = ({
       localStorage.setItem("token", jwt);
       getCurrentUser(jwt);
       toggleAccountModal();
-      history.push("/");
     } catch (ex) {
       if (ex.response && ex.response.status === 400) {
         setAlert("error");
