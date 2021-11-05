@@ -27,7 +27,7 @@ const ProductModal = ({
   productModalActive,
   productModalToggle,
 }) => {
-  const { jwt } = useCurrentUser();
+  const { existingJWT } = useCurrentUser();
   const { metals } = useMetals();
   const { pieces } = usePieces();
   const { stones } = useStones();
@@ -98,10 +98,10 @@ const ProductModal = ({
       let jewelFormData = objectToFormData(productObject);
       switch (modalType) {
         case "add":
-          postJewels(jewelFormData, jwt);
+          postJewels(jewelFormData, existingJWT);
           break;
         case "edit":
-          editJewel(jewelFormData, product._id, jwt);
+          editJewel(jewelFormData, product._id, existingJWT);
           break;
       }
     } catch (ex) {}
