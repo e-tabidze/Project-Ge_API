@@ -47,6 +47,7 @@ export function getPieces() {
 }
 
 export function postJewels(newJewel, userToken) {
+  console.log(userToken, "[ADD JEWEL TOKEN]")
   return http
     .post("/api/jewels/add", newJewel, {
       headers: {

@@ -6,7 +6,7 @@ const useCurrentUser = () => {
   const currentUserRef = useRef(null);
   const existingJWT = localStorage.getItem("token");
 
-  let getCurrentUser = (jwt) => {
+  const getCurrentUser = (jwt) => {
     try {
       let currentUserData = jwtDecode(jwt ? jwt : existingJWT);
       console.log(currentUserData, "[IBIOMAW]")
@@ -22,9 +22,6 @@ const useCurrentUser = () => {
     };
   }, []);
 
-  useEffect(() => {
-    console.log(currentUser, "AXUIEW");
-  }, [currentUser])
   return { currentUser, setCurrentUser, getCurrentUser, existingJWT, currentUserRef };
 };
 
