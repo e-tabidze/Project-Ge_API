@@ -73,7 +73,7 @@ const ProductModal = ({
 
   useEffect(() => {
     const subscription = watch((value) => {
-      // console.log(value);
+      console.log(value);
       return value;
     });
 
