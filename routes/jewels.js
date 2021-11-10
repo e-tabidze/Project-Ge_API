@@ -39,7 +39,6 @@ router.post("/add", auth, upload.array("productImage"), async (req, res) => {
   let imageArray = req.files.map((file) => {
     return file.path;
   });
-  console.log(imageArray, "<--- Image Array");
   let userObject = jwt.decode(req.headers["x-auth-token"]);
   // datecreator
   Date.prototype.addDays = function (days) {
@@ -52,7 +51,7 @@ router.post("/add", auth, upload.array("productImage"), async (req, res) => {
   let newDateNow = new Date(dateNow);
   let expDate = newDateNow.addDays(30);
   // console.log(expDate.toDateString());
-  console.log(req.body, "NEW JEWEL");
+  console.log(req.body, "NEW JEWEL NEED IT NOW");
   let jewel = new Jewel({
     name: req.body.name,
     // duration: req.body.duration,

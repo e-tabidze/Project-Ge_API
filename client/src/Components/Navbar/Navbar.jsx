@@ -17,13 +17,12 @@ import userClasses from "../../ReusableComponents/UserInitial/styles.module.scss
 const Navbar = () => {
   const [submenuActive, setSubmenuActive] = useState(false);
   const [accountModalActive, setAccountModalActive] = useState(false);
-  const { currentUser, setCurrentUser, getCurrentUser, currentUserRef } = useCurrentUser();
+  const { currentUser, setCurrentUser, getCurrentUser, currentUserRef } =
+    useCurrentUser();
 
   const history = useHistory();
 
-  useEffect(() => {
-    console.log(currentUser, "[NAVBAR CURRENT USER]")
-  }, [currentUser])
+  useEffect(() => {}, [currentUser]);
 
   const toggleSubmenu = () => {
     setSubmenuActive(!submenuActive);

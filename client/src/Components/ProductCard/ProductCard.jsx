@@ -70,21 +70,16 @@ const ProductModal = ({
       description: productObject.description,
     },
   });
-  const watchSize = watch("piece");
   const watchMetal = watch("metal");
 
   useEffect(() => {
     const subscription = watch((value) => {
-      console.log(value);
-      console.log(watch("piece"), "<====");
+      // console.log(value);
+      return value;
     });
 
     return () => subscription.unsubscribe();
   }, [watch]);
-
-  useEffect(() => {
-    console.log(watch("piece"), "<=====");
-  });
 
   const objectToFormData = (obj) => {
     let fd = new FormData();

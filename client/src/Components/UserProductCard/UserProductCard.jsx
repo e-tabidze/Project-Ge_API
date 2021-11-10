@@ -37,7 +37,7 @@ const UserProductCard = ({ userJewel }) => {
       toggleConfirmModal();
       setSuccessAlert(!successAlert);
     } catch (ex) {
-      if (ex.response && ex.response.status === 404) console.log(ex);
+      if (ex.response && ex.response.status === 404)
       toast.error("პროდუქტი უკვე წაშლილია");
     }
   };

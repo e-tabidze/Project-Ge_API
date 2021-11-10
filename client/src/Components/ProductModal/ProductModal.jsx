@@ -73,7 +73,8 @@ const ProductModal = ({
 
   useEffect(() => {
     const subscription = watch((value) => {
-      console.log(value);
+      // console.log(value);
+      return value;
     });
 
     return () => subscription.unsubscribe();
@@ -154,7 +155,7 @@ const ProductModal = ({
           )}
         />
 
-        {watch("piece") === "6127186196d01a09d81632fa" && (
+        {watch("piece") === "618be157a4992a8f222f09bf" && (
           <TextField
             {...register("size")}
             required
@@ -199,7 +200,7 @@ const ProductModal = ({
               <div className={classes.dropdown}>
                 <InputLabel required>სინჯი</InputLabel>
                 <>
-                  {watch("metal") === "612695f90dade4d347a56a82" ? (
+                  {watch("metal") === "618bd992a4992a8f222f09bc" ? (
                     <Select fullWidth {...field}>
                       {goldStandards.map((goldStandard) => (
                         <MenuItem

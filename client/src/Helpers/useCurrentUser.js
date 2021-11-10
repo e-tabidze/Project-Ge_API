@@ -9,7 +9,6 @@ const useCurrentUser = () => {
   const getCurrentUser = (jwt) => {
     try {
       let currentUserData = jwtDecode(jwt ? jwt : existingJWT);
-      console.log(currentUserData, "[IBIOMAW]")
       setCurrentUser(currentUserData);
       currentUserRef.current = currentUserData;
     } catch (ex) {}

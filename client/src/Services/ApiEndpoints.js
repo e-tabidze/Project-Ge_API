@@ -9,11 +9,9 @@ export function getJewels() {
 }
 
 export function getJewel(id) {
-  return http
-    .put(`/api/jewels/jewel`, { id: id })
-    .then((res) => {
-      return res.data;
-    });
+  return http.put(`/api/jewels/jewel`, { id: id }).then((res) => {
+    return res.data;
+  });
 }
 
 export function getUserJewels(userId) {
@@ -21,11 +19,9 @@ export function getUserJewels(userId) {
 }
 
 export function getSimilarJewels(type) {
-  return http
-    .post("/api/jewels/similar", { type: type })
-    .then((res) => {
-      return res.data;
-    });
+  return http.post("/api/jewels/similar", { type: type }).then((res) => {
+    return res.data;
+  });
 }
 
 export function getStones() {
@@ -47,7 +43,6 @@ export function getPieces() {
 }
 
 export function postJewels(newJewel, userToken) {
-  console.log(userToken, "[ADD JEWEL TOKEN]")
   return http
     .post("/api/jewels/add", newJewel, {
       headers: {
@@ -58,6 +53,7 @@ export function postJewels(newJewel, userToken) {
       },
     })
     .then((res) => {
+      console.log(res.data, "RES.DATA, API SERVICES")
       return res.data;
     });
 }
@@ -102,11 +98,9 @@ export function loginUser(email, password) {
 }
 
 export function forgotPassword(email) {
-  return http
-    .post("/api/password-reset", { email })
-    .then((res) => {
-      return res.data;
-    });
+  return http.post("/api/password-reset", { email }).then((res) => {
+    return res.data;
+  });
 }
 
 export function changePassword(userId, userToken, password) {

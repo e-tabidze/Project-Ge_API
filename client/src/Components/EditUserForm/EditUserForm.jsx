@@ -2,7 +2,6 @@ import React, { useEffect } from "react";
 
 import { useForm } from "react-hook-form";
 import { TextField, DialogActions, Button } from "@material-ui/core";
-import useCurrentUser from "../../Helpers/useCurrentUser";
 
 const EditUserForm = ({ toggleEditUser, currentUser }) => {
   const {
