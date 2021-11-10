@@ -21,34 +21,34 @@ const passwordReset = require("./routes/passwordReset");
 
 require("dotenv").config();
 
-const expChecker = async () => {
-  const jewelsArray = await Jewel.find();
-  // let jewelsArrayFiltered = jewelsArray.filter((item) => {
-  //   return item.type.name === "Super" || "VIP";
-  // });
-  let dateNow = Date.now();
-  let newDateNow = new Date(dateNow);
-  jewelsArray.forEach(async (item) => {
-    if (
-      item.expirationDate.getDate() === newDateNow.getDate() &&
-      item.expirationDate.getMonth() === newDateNow.getMonth() &&
-      item.expirationDate.getYear() === newDateNow.getYear() &&
-      !item.expired
-    ) {
-      await Jewel.findByIdAndUpdate(item.id, { expired: true });
-    }
-  });
-};
+// const expChecker = async () => {
+//   const jewelsArray = await Jewel.find();
+//   // let jewelsArrayFiltered = jewelsArray.filter((item) => {
+//   //   return item.type.name === "Super" || "VIP";
+//   // });
+//   let dateNow = Date.now();
+//   let newDateNow = new Date(dateNow);
+//   jewelsArray.forEach(async (item) => {
+//     if (
+//       item.expirationDate.getDate() === newDateNow.getDate() &&
+//       item.expirationDate.getMonth() === newDateNow.getMonth() &&
+//       item.expirationDate.getYear() === newDateNow.getYear() &&
+//       !item.expired
+//     ) {
+//       await Jewel.findByIdAndUpdate(item.id, { expired: true });
+//     }
+//   });
+// };
 
-const subscribtionJob = new CronJob(
-  "* * * * * *",
-  expChecker,
-  null,
-  false,
-  "America/Los_Angeles"
-);
+// const subscribtionJob = new CronJob(
+//   "* * * * * *",
+//   expChecker,
+//   null,
+//   false,
+//   "America/Los_Angeles"
+// );
 
-subscribtionJob.start();
+// subscribtionJob.start();
 
 module.exports = function () {
   if (!config.get("jwtPrivateKey")) {
@@ -68,7 +68,7 @@ mongoose
 const whitelist = [
   "http://localhost:3000",
   "http://localhost:8080",
-  "https://ge-gold.herokuapp.com"
+  "https://ge-gold.herokuapp.com",
 ];
 const corsOptions = {
   origin: function (origin, callback) {
