@@ -78,7 +78,7 @@ const corsOptions = {
       callback(null, true);
     } else {
       console.log("Origin rejected");
-      callback(new Error(`"Not allowed by CORS", ${origin}`));
+      callback(new Error(`"Not allowed by CORS DEDISTYVNA ", ${origin}`));
     }
   },
 };
