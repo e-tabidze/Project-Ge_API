@@ -74,7 +74,7 @@ const ProductModal = ({
 
   useEffect(() => {
     const subscription = watch((value) => {
-      // console.log(value);
+      console.log(value);
       return value;
     });
 
@@ -83,6 +83,7 @@ const ProductModal = ({
 
   const objectToFormData = (obj) => {
     let fd = new FormData();
+    console.log(obj, "OBJ");
     for (let item in obj) {
       if (item === "productImage") {
         for (const key of Object.keys(obj[item])) {
