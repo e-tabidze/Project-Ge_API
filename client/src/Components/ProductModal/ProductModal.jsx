@@ -97,6 +97,7 @@ const ProductModal = ({
   const onSubmit = () => {
     try {
       let jewelFormData = objectToFormData(productObject);
+      console.log(productObject, "productObject");
       switch (modalType) {
         case "add":
           postJewels(jewelFormData, existingJWT);
