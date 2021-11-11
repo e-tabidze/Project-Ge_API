@@ -94,7 +94,7 @@ const ProductModal = ({
     return fd;
   };
 
-  const onSubmit = () => {
+  const onSubmit = (productObject) => {
     try {
       let jewelFormData = objectToFormData(productObject);
       console.log(productObject, "productObject");
