@@ -21,7 +21,7 @@ const UserProductCard = ({ userJewel }) => {
   const [confirmModal, setConfirmModal] = useState(false);
   const [productModalActive, setProductModalActive] = useState(false);
   const [successAlert, setSuccessAlert] = useState(false);
-  const { jwt } = useCurrentUser();
+  const { jwt, existingJWT } = useCurrentUser();
 
   const toggleConfirmModal = () => {
     setConfirmModal(!confirmModal);
@@ -33,12 +33,12 @@ const UserProductCard = ({ userJewel }) => {
 
   const handleDelete = async () => {
     try {
-      await deleteJewel(userJewel._id, jwt);
+      await deleteJewel(userJewel._id, existingJWT);
       toggleConfirmModal();
       setSuccessAlert(!successAlert);
     } catch (ex) {
       if (ex.response && ex.response.status === 404)
-      toast.error("პროდუქტი უკვე წაშლილია");
+        toast.error("პროდუქტი უკვე წაშლილია");
     }
   };
   return (
