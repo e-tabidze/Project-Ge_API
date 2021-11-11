@@ -7,7 +7,6 @@ import "slick-carousel/slick/slick-theme.css";
 import MagicSliderDots from "react-magic-slider-dots";
 import "react-magic-slider-dots/dist/magic-dots.css";
 
-
 const ImageSlider = ({ sliderData, classes }) => {
   const settings = {
     dots: true,
@@ -29,7 +28,9 @@ const ImageSlider = ({ sliderData, classes }) => {
       {sliderData?.map((sliderImg, index) => (
         <div key={index}>
           <img
-            src={sliderImg.image || `http://localhost:3000/${sliderImg}`}
+            src={
+              sliderImg.image || `https://ge-gold.herokuapp.com/${sliderImg}`
+            }
             alt="project-ge"
           />
         </div>

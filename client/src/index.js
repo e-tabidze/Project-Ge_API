@@ -6,9 +6,9 @@ import { BrowserRouter, HashRouter } from "react-router-dom";
 
 ReactDOM.render(
   <React.Fragment>
-    <HashRouter>
+    <BrowserRouter>
       <App />
-    </HashRouter>
+    </BrowserRouter>
   </React.Fragment>,
   document.getElementById("root")
 );
