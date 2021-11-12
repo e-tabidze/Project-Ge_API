@@ -8,7 +8,7 @@ import AccountModal from "../AccountModal/AccountModal";
 
 import { NavLink, useHistory } from "react-router-dom";
 import MenuIcon from "@mui/icons-material/Menu";
-import RoomServiceSharpIcon from "@mui/icons-material/RoomServiceSharp";
+// import RoomServiceSharpIcon from "@mui/icons-material/RoomServiceSharp";
 
 import logo from "../../Assets/logo.png";
 import classes from "./styles.module.scss";
@@ -63,12 +63,12 @@ const Navbar = () => {
           label={currentUser ? "ჩემი გვერდი" : "შესვლა"}
           onClick={currentUser ? redirectToUserPage : toggleAccountModal}
         />
-        <NavLink to="/">
+        {/* <NavLink to="/">
           <RoomServiceSharpIcon
             fontSize={"medium"}
             style={{ color: "#ffffff", cursor: "pointer" }}
           />
-        </NavLink>
+        </NavLink> */}
         <MenuIcon
           fontSize={"medium"}
           style={{ color: "#ffffff", cursor: "pointer" }}

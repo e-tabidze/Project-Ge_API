@@ -22,7 +22,10 @@ const HomePage = () => {
 
   useEffect(() => {
     jewels && setFilteredJewels(jewels);
+    console.log(jewels, "JEWELS");
   }, [jewels]);
+
+  console.log(filteredJewels, "FILTEREDJEWELS");
 
   const sliderData = [
     { image: banner1 },
