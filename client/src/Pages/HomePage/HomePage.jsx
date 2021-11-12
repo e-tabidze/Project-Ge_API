@@ -71,7 +71,7 @@ const HomePage = () => {
           />
         </div>
         <div className={classes.homepage_content_products}>
-          {jewels?.map((jewel) => {
+          {filteredJewels?.map((jewel) => {
             return <ProductCard product={jewel} key={jewel._id} />;
           })}
         </div>
