@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { editJewel, postJewels } from "../../Services/ApiEndpoints";
 import useCurrentUser from "../../Helpers/useCurrentUser";
+import useUserJewels from "../../Helpers/useUserJewels";
 import useMetals from "../../Helpers/useMetals";
 import usePieces from "../../Helpers/usePieces";
 import useStones from "../../Helpers/useStones";
@@ -31,6 +32,7 @@ const ProductModal = ({
   const { metals } = useMetals();
   const { pieces } = usePieces();
   const { stones } = useStones();
+  const { setUserJewels } = useUserJewels();
   const [productObject, setProductObject] = useState({
     name: product?.name || "",
     piece: product?.piece._id || "",
@@ -101,6 +103,8 @@ const ProductModal = ({
       switch (modalType) {
         case "add":
           postJewels(jewelFormData, existingJWT);
+          setUserJewels();
+          productModalToggle();
           break;
         case "edit":
           editJewel(jewelFormData, product._id, existingJWT);
