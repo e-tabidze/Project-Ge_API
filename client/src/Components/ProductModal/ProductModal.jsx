@@ -145,6 +145,7 @@ const ProductModal = ({
             <div className={classes.dropdown}>
               <InputLabel required>ნაკეთობა</InputLabel>
               <Select fullWidth {...field}>
+                <MenuItem value=""> </MenuItem>
                 {pieces?.map((piece) => (
                   <MenuItem key={piece._id} value={piece._id}>
                     {piece.name}
@@ -182,6 +183,8 @@ const ProductModal = ({
             <div className={classes.dropdown}>
               <InputLabel required>მეტალი</InputLabel>
               <Select fullWidth {...field}>
+                <MenuItem value=""> </MenuItem>
+
                 {metals?.map((metal) => (
                   <MenuItem key={metal._id} value={metal._id}>
                     {metal.name}
@@ -237,6 +240,8 @@ const ProductModal = ({
             <div className={classes.dropdown}>
               <InputLabel required>შიგთავსი</InputLabel>
               <Select fullWidth {...field}>
+                <MenuItem value=""> </MenuItem>
+
                 {stones?.map((stone) => (
                   <MenuItem key={stone._id} value={stone._id}>
                     {stone.name}

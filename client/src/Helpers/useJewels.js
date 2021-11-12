@@ -15,7 +15,7 @@ const useJewels = () => {
       setJewels(null);
     };
   }, []);
-  return { jewels, setJewels, handleGetJewels };
+  return { jewels, setJewels };
 };
 
 export default useJewels;

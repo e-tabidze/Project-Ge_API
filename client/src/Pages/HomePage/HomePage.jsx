@@ -24,7 +24,6 @@ const HomePage = () => {
     jewels && setFilteredJewels(jewels);
   }, [jewels]);
 
-  console.log(jewels, "JEWELS");
 
   const sliderData = [
     { image: banner1 },
