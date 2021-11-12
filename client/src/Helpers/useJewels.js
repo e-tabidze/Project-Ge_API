@@ -7,7 +7,6 @@ const useJewels = () => {
   const handleGetJewels = async () => {
     const data = await getJewels();
     setJewels(data);
-    console.log(data, "DATA USEJEWELS");
   };
 
   useEffect(() => {
@@ -16,7 +15,6 @@ const useJewels = () => {
       setJewels(null);
     };
   }, []);
-  console.log(jewels, "JEWELS USEJEWELS");
   return { jewels, setJewels, handleGetJewels };
 };
 
