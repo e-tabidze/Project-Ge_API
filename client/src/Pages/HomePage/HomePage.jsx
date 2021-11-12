@@ -22,10 +22,9 @@ const HomePage = () => {
 
   useEffect(() => {
     jewels && setFilteredJewels(jewels);
-    console.log(jewels, "JEWELS");
   }, [jewels]);
 
-  console.log(filteredJewels, "FILTEREDJEWELS");
+  console.log(jewels, "JEWELS");
 
   const sliderData = [
     { image: banner1 },
@@ -72,7 +71,7 @@ const HomePage = () => {
           />
         </div>
         <div className={classes.homepage_content_products}>
-          {filteredJewels?.map((jewel) => {
+          {jewels?.map((jewel) => {
             return <ProductCard product={jewel} key={jewel._id} />;
           })}
         </div>
