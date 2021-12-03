@@ -15,20 +15,17 @@ import "react-toastify/dist/ReactToastify.css";
 import "./App.scss";
 
 function App() {
-  const { currentUser } = useCurrentUser();
+  const { currentUser, setCurrentUser, getCurrentUser } = useCurrentUser();
   return (
     <Switch>
       <>
         <ToastContainer />
-        <Navbar />
+        <Navbar
+          setCurrentUser={setCurrentUser}
+          getCurrentUser={getCurrentUser}
+          currentUser={currentUser}
+        />
         <Route exact path="/" component={() => <HomePage />} />
-        {/* <Route
-          exact
-          path="/user-page"
-          render={() => {
-            jwt && <UserPage />;
-          }}
-        /> */}
         <Route
           exact
           path="/user-page"

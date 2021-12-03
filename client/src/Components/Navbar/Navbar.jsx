@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import useCurrentUser from "../../Helpers/useCurrentUser";
 
 import Button from "../../ReusableComponents/Button/Button";
 import UserInitial from "../../ReusableComponents/UserInitial/UserInitial";
@@ -8,17 +7,14 @@ import AccountModal from "../AccountModal/AccountModal";
 
 import { NavLink, useHistory } from "react-router-dom";
 import MenuIcon from "@mui/icons-material/Menu";
-// import RoomServiceSharpIcon from "@mui/icons-material/RoomServiceSharp";
 
 import logo from "../../Assets/logo.png";
 import classes from "./styles.module.scss";
 import userClasses from "../../ReusableComponents/UserInitial/styles.module.scss";
 
-const Navbar = () => {
+const Navbar = ({ currentUser, setCurrentUser, getCurrentUser }) => {
   const [submenuActive, setSubmenuActive] = useState(false);
   const [accountModalActive, setAccountModalActive] = useState(false);
-  const { currentUser, setCurrentUser, getCurrentUser, currentUserRef } =
-    useCurrentUser();
 
   const history = useHistory();
 
@@ -63,12 +59,6 @@ const Navbar = () => {
           label={currentUser ? "ჩემი გვერდი" : "შესვლა"}
           onClick={currentUser ? redirectToUserPage : toggleAccountModal}
         />
-        {/* <NavLink to="/">
-          <RoomServiceSharpIcon
-            fontSize={"medium"}
-            style={{ color: "#ffffff", cursor: "pointer" }}
-          />
-        </NavLink> */}
         <MenuIcon
           fontSize={"medium"}
           style={{ color: "#ffffff", cursor: "pointer" }}

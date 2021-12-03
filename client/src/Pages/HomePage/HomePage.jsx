@@ -9,7 +9,7 @@ import banner1 from "../../Assets/main.jpeg";
 import banner2 from "../../Assets/main.jpeg";
 import banner3 from "../../Assets/main.jpeg";
 import banner4 from "../../Assets/main.jpeg";
-// import side from "../../Assets/side.jpeg";
+import side from "../../Assets/side.jpeg";
 import filterIcon from "../../Assets/filter-icon.png";
 
 import classes from "./styles.module.scss";
@@ -17,13 +17,12 @@ import userClasses from "../../ReusableComponents/ImageSlider/styles.module.scss
 
 const HomePage = () => {
   const { jewels } = useJewels();
-  const [filters, setFilters] = useState(false);
+  const [filters, setFilters] = useState(true);
   const [filteredJewels, setFilteredJewels] = useState([]);
 
   useEffect(() => {
     jewels && setFilteredJewels(jewels);
   }, [jewels]);
-
 
   const sliderData = [
     { image: banner1 },
@@ -73,30 +72,14 @@ const HomePage = () => {
           {filteredJewels?.map((jewel) => {
             return <ProductCard product={jewel} key={jewel._id} />;
           })}
+          <img
+            src={side}
+            alt="ოქროს მარკეტი საქართველოში"
+            className={classes.homepage_ad}
+          />
         </div>
       </div>
-      <div className={classes.homepage_ads}>
-        {/* <img
-          src={side}
-          alt="ოქროს მარკეტი საქართველოში"
-          className={classes.homepage_ads_ad}
-        />
-        <img
-          src={side}
-          alt="ოქროს მარკეტი საქართველოში"
-          className={classes.homepage_ads_ad}
-        />
-        <img
-          src={side}
-          alt="ოქროს მარკეტი საქართველოში"
-          className={classes.homepage_ads_ad}
-        />
-        <img
-          src={side}
-          alt="ოქროს მარკეტი საქართველოში"
-          className={classes.homepage_ads_ad}
-        /> */}
-      </div>
+      <div className={classes.homepage_ads}></div>
     </div>
   );
 };

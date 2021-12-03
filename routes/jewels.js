@@ -50,8 +50,6 @@ router.post("/add", auth, upload.array("productImage"), async (req, res) => {
   let dateNow = Date.now();
   let newDateNow = new Date(dateNow);
   let expDate = newDateNow.addDays(30);
-  // console.log(expDate.toDateString());
-  console.log(req.body, "NEW JEWEL NEED IT NOW");
   let jewel = new Jewel({
     name: req.body.name,
     // duration: req.body.duration,
@@ -79,26 +77,19 @@ router.post("/add", auth, upload.array("productImage"), async (req, res) => {
       _id: stone._id,
       name: stone.name,
     },
-    // type: {
-    //   _id: type._id,
-    //   name: type.name,
-    // },
   });
 
   await jewel.save();
-  console.log(jewel);
-
   res.send(jewel);
 });
 
 router.post("/similar", async (req, res) => {
   let data = await Jewel.find();
   let filteredData = data.filter((item) => item.piece._id == req.body.type);
-  // console.log(filteredData, req.body.type);
   res.send(filteredData);
 });
 
-router.post(
+router.patch(
   "/update/:id",
   auth,
   upload.array("productImage"),
@@ -119,7 +110,6 @@ router.post(
       return file.path;
     });
 
-    console.log(req.body, "Body");
     var exisArr = req.body.existingImages.split(",");
 
     exisArr.map((item) => {
@@ -147,10 +137,6 @@ router.post(
           _id: stone._id,
           name: stone.name,
         },
-        // type: {
-        //   _id: type._id,
-        //   name: type.name,
-        // },
       },
       { new: true }
     );

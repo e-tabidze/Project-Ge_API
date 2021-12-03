@@ -55,18 +55,18 @@ module.exports = function () {
     throw new Error("FATAL ERROR: jwtPrivateKey is not defined.");
   }
 };
-
 mongoose
   .connect(process.env.MONGODB_URI || process.env.DB, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
   .then(() => console.log("Connected to MongoDB..."))
-  .catch((err) => console.error("Could not connect to MongoDB..."));
+  .catch((err) => console.error("Could not connect to MongoDB...", err));
 
 // ** MIDDLEWARE ** //
 const whitelist = [
   "http://localhost:3000",
+  "http://localhost:5000",
   "http://localhost:8080",
   "https://ge-gold.herokuapp.com",
 ];
@@ -96,14 +96,14 @@ app.use("/api/users", users);
 app.use("/api/password-reset", passwordReset);
 app.use("/api/auth", auth);
 
-if (process.env.NODE_ENV === "production") {
-  app.use(express.static(path.join(__dirname, "/client/build")));
-  // app.use(express.static("client/build"));
+// if (process.env.NODE_ENV === "production") {
+app.use(express.static(path.join(__dirname, "/client/build")));
+// app.use(express.static("client/build"));
 
-  app.get("*", function (req, res) {
-    res.sendFile(path.join(__dirname, "/client/build", "index.html"));
-  });
-}
+app.get("*", function (req, res) {
+  res.sendFile(path.join(__dirname, "/client/build", "index.html"));
+});
+// }
 
-const port = process.env.PORT || 5000;
+const port = process.env.PORT || 3000;
 app.listen(port, () => console.log(`Listening on port ${port}...`));

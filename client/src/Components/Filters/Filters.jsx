@@ -43,19 +43,30 @@ const Filters = ({ toggleFilters, setFilteredJewels }) => {
       <div className={classes.filter_close}>
         <ClearSharpIcon
           onClick={toggleFilters}
-          style={{ color: "#001e42", cursor: "pointer" }}
+          style={{ color: "#ffffff", cursor: "pointer" }}
         />
       </div>
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className={classes.filter_type}>მასალა</div>
-        {metals && <Select register={register} data={metals} type={"metal"} />}
+        {metals && (
+          <Select
+            register={register}
+            data={metals}
+            type={"metal"}
+            className="filter-select"
+          />
+        )}
         <div className={classes.filter_type_lower}>ნაკეთობა</div>
         {pieces && <Select register={register} data={pieces} type={"piece"} />}
         <div className={classes.filter_type_lower}>შიგთავსი</div>
         {stones && <Select register={register} data={stones} type={"stone"} />}
         <DialogActions>
-          <Button type="submit">არჩევა</Button>
-          <Button onClick={toggleFilters}>გაუქმება</Button>
+          <Button type="submit" className="filter-btn">
+            არჩევა
+          </Button>
+          <Button onClick={toggleFilters} className="filter-btn">
+            გაუქმება
+          </Button>
         </DialogActions>
       </form>
     </section>

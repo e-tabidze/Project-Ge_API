@@ -69,6 +69,15 @@
         }
       }
     }
+    &_ads {
+      display: flex;
+      justify-content: space-evenly;
+      &_ad {
+        width: 24.5%;
+        height: 400px;
+        object-fit: cover;
+      }
+    }
     &_similarjewels {
       margin-top: 48px;
       &_products {

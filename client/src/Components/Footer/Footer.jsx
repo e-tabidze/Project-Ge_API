@@ -5,9 +5,12 @@ import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import WebIcon from "@mui/icons-material/Web";
 import LocalPhoneSharpIcon from "@mui/icons-material/LocalPhoneSharp";
 import MailOutlineSharpIcon from "@mui/icons-material/MailOutlineSharp";
+import LinkedInIcon from "@mui/icons-material/LinkedIn";
+import FacebookRoundedIcon from "@mui/icons-material/FacebookRounded";
+import WhatsappOutlinedIcon from "@mui/icons-material/WhatsappOutlined";
 
-import classes from "./styles.module.scss";
 import goldenLogo from "../../Assets/logo-gold.png";
+import classes from "./styles.module.scss";
 
 const Footer = () => {
   return (
@@ -56,6 +59,17 @@ const Footer = () => {
               style={{ color: "#001e42" }}
             />
             <span>support@gegold.ge</span>
+          </li>
+          <li>
+            <FacebookRoundedIcon
+              fontSize="small"
+              style={{ color: "#001e42", marginRight: "12px" }}
+            />
+            <WhatsappOutlinedIcon
+              fontSize="small"
+              style={{ color: "#001e42", marginRight: "12px" }}
+            />
+            <LinkedInIcon fontSize="small" style={{ color: "#001e42" }} />
           </li>
         </div>
       </div>

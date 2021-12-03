@@ -23,6 +23,59 @@
   align-items: flex-start;
 }
 
+ul .MuiList-root {
+  display: flex;
+  flex-direction: column;
+}
+
+.MuiFormGroup-root {
+  label {
+    @media only screen and (max-width: 1024px) {
+      color: #ffffff !important;
+    }
+  }
+}
+
+.MuiCheckbox-root {
+  &.MuiCheckbox-colorPrimary {
+    &.MuiButtonBase-root {
+      &.MuiCheckbox-root {
+        margin: 1px 10px !important;
+      }
+    }
+  }
+}
+
+.MuiList-root {
+  &.MuiList-padding {
+    &.css-1ontqvh {
+      display: flex !important;
+      flex-direction: column !important;
+    }
+  }
+}
+
+label .MuiTypography-body1 {
+  @media only screen and (max-width: 1024px) {
+    color: #ffffff !important;
+  }
+}
+.filter-select {
+  @media only screen and (max-width: 1024px) {
+    span {
+      color: #ffffff !important;
+    }
+  }
+}
+
+.filter-btn {
+  .MuiButton-label {
+    @media only screen and (max-width: 1024px) {
+      color: #ffffff !important;
+    }
+  }
+}
+
 .slick-arrow {
   color: #bb9654 !important;
 }
@@ -88,10 +141,11 @@ a {
   }
 }
 
-a {
-}
 .MuiCard-root {
-  height: 380px !important;
+  height: 430px !important;
+}
+.MuiCardContent-root {
+  height: 275px !important;
 }
 
 .App-header {

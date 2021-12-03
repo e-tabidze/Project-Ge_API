@@ -16,12 +16,7 @@ const ProductPage = () => {
 
   return (
     <section className={classes.productpage}>
-      <div className={classes.productpage_sideAds}>
-        <img src={side} alt="ოქროს მარკეტი საქართველოში" />
-        <img src={side} alt="ოქროს მარკეტი საქართველოში" />
-        <img src={side} alt="ოქროს მარკეტი საქართველოში" />
-        <img src={side} alt="ოქროს მარკეტი საქართველოში" />
-      </div>
+      <div className={classes.productpage_sideAds}></div>
 
       <div className={classes.productpage_products}>
         <div className={classes.productpage_products_ad}>
@@ -98,6 +93,28 @@ const ProductPage = () => {
         </div>
 
         <div className={classes.productpage_product_similarjewels}>
+          <div className={classes.productpage_product_ads}>
+            <img
+              src={side}
+              alt="ოქროს მარკეტი საქართველოში"
+              className={classes.productpage_product_ads_ad}
+            />
+            <img
+              src={side}
+              alt="ოქროს მარკეტი საქართველოში"
+              className={classes.productpage_product_ads_ad}
+            />
+            <img
+              src={side}
+              alt="ოქროს მარკეტი საქართველოში"
+              className={classes.productpage_product_ads_ad}
+            />
+            <img
+              src={side}
+              alt="ოქროს მარკეტი საქართველოში"
+              className={classes.productpage_product_ads_ad}
+            />
+          </div>
           <p className={classes.productpage_product_info_specs_title}>
             მსგავსი პროდუქტები
           </p>
