@@ -66,6 +66,7 @@ mongoose
 // ** MIDDLEWARE ** //
 const whitelist = [
   "http://localhost:3000",
+  "http://localhost:3001",
   "http://localhost:5000",
   "http://localhost:8080",
   "https://ge-gold.herokuapp.com",
@@ -78,7 +79,7 @@ const corsOptions = {
       callback(null, true);
     } else {
       console.log("Origin rejected");
-      callback(new Error(`"Not allowed by CORS DEDISTYVNA ", ${origin}`));
+      callback(new Error(`"Not allowed by CORS", ${origin}`));
     }
   },
 };

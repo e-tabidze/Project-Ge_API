@@ -24,14 +24,18 @@ const userSchema = new mongoose.Schema({
     required: true,
     maxlength: 1024,
   },
-  favorite_product: {
+  favorite_products: {
     type: Array,
   },
 });
 
 userSchema.methods.generateAuthToken = function () {
   const token = jwt.sign(
-    { _id: this._id, name: this.name, email: this.email },
+    {
+      _id: this._id,
+      name: this.name,
+      email: this.email,
+    },
     process.env.ACCESS_TOKEN_SECRET
   );
   return token;
@@ -50,6 +54,7 @@ function validateUser(user) {
       .error(() => {
         return { message: "The passwords don't match." };
       }),
+    favorite_products: Joi.any(),
   };
 
   return Joi.validate(user, schema);

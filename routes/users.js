@@ -50,7 +50,13 @@ router.post("/", async (req, res) => {
   if (user) return res.status(400).send("User is already registered");
 
   user = new User(
-    _.pick(req.body, ["name", "email", "password", "repeat_password"])
+    _.pick(req.body, [
+      "name",
+      "email",
+      "password",
+      "repeat_password",
+      "favorite_products",
+    ])
   );
 
   const salt = await bcrypt.genSalt(10);
@@ -74,6 +80,40 @@ router.post("/update/:id", auth, async (req, res) => {
 router.post("/jewels", async (req, res) => {
   let jewels = await Jewel.find({ userId: req.body.userId });
   res.send(jewels);
+});
+
+// adding fav product
+router.get("/add/:userID/:productID", async (req, res) => {
+  await User.findById(req.params.userID)
+    .then(async (response) => {
+      response.favorite_products.push(req.params.productID);
+      await response.save();
+      res.status(200).send({ message: "OK", response });
+    })
+    .catch((err) => {
+      res.status(400).send({ message: "Tupoi" });
+    });
+});
+
+// removing fav product
+router.get("/remove/:userID/:productID", async (req, res) => {
+  await User.findById(req.params.userID)
+    .then(async (response) => {
+      response.favorite_products?.remove(req.params.productID);
+      await response.save();
+      res.status(200).send({ message: "OK", response });
+    })
+    .catch((err) => {
+      res.status(400).send({ message: "Tupoi" });
+    });
+});
+
+// get user favorite produts
+router.get("/:userID", async (req, res) => {
+  const userJewels = await User.findById(req.params.userID).select(
+    "favorite_products"
+  );
+  res.send(userJewels);
 });
 
 module.exports = router;
