@@ -70,7 +70,7 @@ const whitelist = [
   "http://localhost:5000",
   "http://localhost:8080",
   "https://ge-gold.herokuapp.com",
-  "ec2-13-59-152-59.us-east-2.compute.amazonaws.com"
+  "http://ec2-13-59-152-59.us-east-2.compute.amazonaws.com"
 ];
 const corsOptions = {
   origin: function (origin, callback) {
