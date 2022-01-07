@@ -79,7 +79,7 @@ const corsOptions = {
       // console.log("Origin acceptable");
       callback(null, true);
     } else {
-      // console.log("Origin rejected");
+      console.log(whitelist.indexOf(origin), whitelist, "[AAAA]")
       callback(new Error(`"Not allowed by CORS", ${origin}`));
     }
   },
