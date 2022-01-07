@@ -39,7 +39,7 @@ router.post("/add", auth, upload.array("productImage"), async (req, res) => {
   let imageArray = req.files.map((file) => {
     return file.path;
   });
-  let userObject = jwt.decode(req.headers["x-auth-token"]);
+  let userObject = jwt.decode(req.headers["token"]);
   // datecreator
   Date.prototype.addDays = function (days) {
     var date = new Date(this.valueOf());
@@ -90,10 +90,12 @@ router.post("/similar", async (req, res) => {
 });
 
 router.patch(
-  "/update/:id",
+  "/updateproduct/:id",
   auth,
   upload.array("productImage"),
   async (req, res) => {
+    console.log(req.body, "body");
+
     const { error } = validate(req.body);
     if (error) return res.status(400).send(error.details[0].message);
 

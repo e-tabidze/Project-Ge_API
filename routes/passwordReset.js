@@ -1,7 +1,9 @@
 const { User } = require("../models/user");
 const Token = require("../models/token");
+const auth = require("../middleware/auth");
 const sendEmail = require("../utils/sendMail");
 const bcrypt = require("bcrypt");
+const jwt = require("jsonwebtoken");
 const crypto = require("crypto");
 const Joi = require("joi");
 const express = require("express");
@@ -35,35 +37,31 @@ router.post("/", async (req, res) => {
   }
 });
 
-router.post("/:userId/:token", async (req, res) => {
-  console.log(req.body);
+router.post("/change", auth, async (req, res) => {
   try {
+    console.log(req.user, "[DECODED USER]");
     const schema = Joi.object({ password: Joi.string().required() });
-    const { error } = schema.validate(req.body);
-    console.log(error, " Error");
-    if (error) return res.status(400).send(error.details[0].message);
-    console.log("Next");
-    const user = await User.findById(req.params.userId);
-    if (!user) return res.status(400).send("invalid link or expired");
-    console.log(user, " USER");
-    const token = await Token.findOne({
-      userId: user._id,
-      token: req.params.token,
-    });
-    if (!token) return res.status(400).send("Invalid link or expired");
-    console.log(token, " TOKEN");
+    const { error } = schema.validate(req.body.password);
+    console.log("We happy? 1")
 
-    user.password = req.body.password;
+    if (error) return res.status(400).send(error.details[0].message);
+    const user = await User.findById(req.user._id);
+    console.log("We happy? 2", user)
+
+    if (!user) return res.status(400).send("User not Found");
+
+    const validPassword = await bcrypt.compare(req.body.currentPassword, user.password);
+    console.log("We happy? 3", validPassword, req.body.currentPassword, user.password);
+    if (!validPassword) return res.status(400).send("Password is Incorrect");
 
     const salt = await bcrypt.genSalt(10);
-    user.password = await bcrypt.hash(req.body.password, salt);
-    await user.save();
-    await token.delete();
-
-    res.send("password reset sucessfully.");
+    user.password = await bcrypt.hash(req.body.newPassword, salt);
+    console.log("We happy? 4")
+    await user.save().catch((e) => console.log(e, "He Dead"));
+    res.status(200).send("Password Changed Successfully")
   } catch (error) {
-    res.send("An error occured");
     console.log(error);
+    res.status(400).send("An error occured");
   }
 });
 

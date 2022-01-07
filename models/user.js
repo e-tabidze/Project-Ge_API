@@ -45,12 +45,12 @@ const User = mongoose.model("Users", userSchema);
 
 function validateUser(user) {
   const schema = {
-    name: Joi.string().max(50).required(),
-    email: Joi.string().email().max(255).required(),
-    password: Joi.string().max(255).min(8).required(),
+    name: Joi.string().max(50),
+    email: Joi.string().email().max(255),
+    password: Joi.string().max(255).min(8),
     repeat_password: Joi.any()
       .valid(Joi.ref("password"))
-      .required()
+      // .required()
       .error(() => {
         return { message: "The passwords don't match." };
       }),

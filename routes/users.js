@@ -3,6 +3,7 @@ const { Jewel } = require("../models/jewel");
 const auth = require("../middleware/auth");
 const _ = require("lodash");
 const bcrypt = require("bcrypt");
+const jwt = require("jsonwebtoken");
 const express = require("express");
 const router = express.Router();
 
@@ -72,9 +73,41 @@ router.post("/", async (req, res) => {
     .send(_.pick(user, ["_id", "name", "email"]));
 });
 
-router.post("/update/:id", auth, async (req, res) => {
+// editUsername
+router.patch("/editusername/:id", auth, async (req, res) => {
   const { error } = validate(req.body);
   if (error) return res.status(400).send(error.details[0].message);
+  const user = await User.findById(req.params.id);
+  if (!user) return res.status(400).send("invalid link or expired");
+
+  user.name = req.body.name;
+  user.email = req.body.email;
+
+  await user.save();
+
+  const token = user.generateAuthToken();
+
+  if (!user) {
+    return res.status(404).send("ERROR");
+  }
+
+  res
+    .header("x-auth-token", token)
+    .header("access-control-expose-headers", "x-auth-token")
+    .send(user);
+});
+
+// check user password when updating password
+router.post("/checkpassword", auth, async (req, res) => {
+  const { error } = validate(req.body);
+  if (error) return res.status(400).send(error.details[0].message);
+  const decoded = jwt.verify(
+    req.header("token"),
+    process.env.ACCESS_TOKEN_SECRET
+  );
+  const user = await User.findOne({ email: decoded.email });
+  const validPassword = await bcrypt.compare(req.body.password, user.password);
+  if (validPassword) return res.status(200).send("Valid email or password");
 });
 
 router.post("/jewels", async (req, res) => {
@@ -83,7 +116,7 @@ router.post("/jewels", async (req, res) => {
 });
 
 // adding fav product
-router.get("/add/:userID/:productID", async (req, res) => {
+router.get("/add/:userID/:productID", auth, async (req, res) => {
   await User.findById(req.params.userID)
     .then(async (response) => {
       response.favorite_products.push(req.params.productID);
@@ -96,7 +129,7 @@ router.get("/add/:userID/:productID", async (req, res) => {
 });
 
 // removing fav product
-router.get("/remove/:userID/:productID", async (req, res) => {
+router.get("/remove/:userID/:productID", auth, async (req, res) => {
   await User.findById(req.params.userID)
     .then(async (response) => {
       response.favorite_products?.remove(req.params.productID);
